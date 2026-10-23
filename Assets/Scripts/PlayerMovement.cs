@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Raycast Settings")]
     [SerializeField] private LayerMask groundLayer;     
     [SerializeField] private float rayDistance = 1.1f;
+    [SerializeField] private float groundRayOffset = 0.5f;
     [SerializeField] private bool isGrounded;
     [Header("Horizontal Raycast")]
     [SerializeField] private float interactionDistance = 2.5f;
@@ -47,8 +48,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckGround()
     {
-        Vector3 origin = transform.position;
-        isGrounded = Physics.Raycast(origin, Vector3.down, rayDistance, groundLayer);
+        Vector3 origin = transform.position + Vector3.down * groundRayOffset;
+        isGrounded = Physics.Raycast(origin, Vector3.down, out RaycastHit hit, rayDistance, groundLayer); 
 
         //Color ColorRay = condicion ? Variable cuando sea verdadera : variable cuando sea falsa;
         Color ColorRay = isGrounded ? Color.green : Color.red;
