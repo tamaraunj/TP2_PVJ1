@@ -6,6 +6,8 @@ public class ScoreSystem : MonoBehaviour
     private int score = 0;
     [SerializeField] private TMP_Text scoreText;
     public int Score => score;
+    private int collectedItems = 0;
+    public int CollectedItems => collectedItems;
     private void Start()
     {
         UpdateScoreText();
@@ -13,8 +15,8 @@ public class ScoreSystem : MonoBehaviour
     public void AddPoints(int points)
     {
         score += points;
+        collectedItems++;
         UpdateScoreText();
-        //Debug.Log("Puntuación actual: " + score);
         if (GameManager.Instance != null)
         {
             GameManager.Instance.NotifyPlayerStatusChanged();

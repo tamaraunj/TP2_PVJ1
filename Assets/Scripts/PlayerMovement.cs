@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float interactionDistance = 2.5f;
     [SerializeField] private LayerMask pickupLayer;
     [SerializeField] private LayerMask consoleLayer;
+    [SerializeField] private LayerMask doorLayer;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -86,25 +87,31 @@ public class PlayerMovement : MonoBehaviour
        
 
         Debug.DrawRay(origin, direction * interactionDistance,Color.blue);
-        int combinedLayers = pickupLayer.value | consoleLayer.value;
+        int combinedLayers = pickupLayer.value | consoleLayer.value | doorLayer.value;
 
         if (Physics.Raycast(origin, direction, out RaycastHit hit, interactionDistance, combinedLayers))
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                BunkerDoor door = hit.collider.GetComponentInParent<BunkerDoor>();
+                if (door != null)
+                {
+                    door.TryOpenDoor();
+                    return;
+                }
                 ConsoleInteraction console = hit.collider.GetComponentInParent<ConsoleInteraction>();
                 if (console != null)
                 {
                     console.Activate();
+                    return;
                 }
-                else
+      
+                PickItem item = hit.collider.GetComponentInParent<PickItem>();
+                if (item != null)
                 {
-                    PickItem item = hit.collider.GetComponentInParent<PickItem>();
-                    if (item != null)
-                    {
-                        item.Collect();
-                    }
+                    item.Collect();
                 }
+                
             }
         }
     }
