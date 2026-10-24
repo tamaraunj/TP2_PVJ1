@@ -4,10 +4,10 @@ using UnityEngine;
 public class HealthSystem : MonoBehaviour
 {
     [Header("Health Settings")]
-    [SerializeField] private float maxHealth = 100f;
+    [SerializeField] private int maxHealth = 100;
     [SerializeField] private TMP_Text healthText;
-    private float currentHealth;
-    public float CurrentHealth => currentHealth;//usamos getter y setter para el gameManager - solo lectura
+    private int currentHealth;
+    public int CurrentHealth => currentHealth;//usamos getter y setter para el gameManager - solo lectura
 
     [SerializeField] private bool isDead;
     public bool IsDead => isDead;
@@ -19,13 +19,13 @@ public class HealthSystem : MonoBehaviour
         UpdateHealthText();
     }
   
-    public void TakeDamage(float amount)
+    public void TakeDamage(int amount)
     {
         if (isDead) return;
 
         currentHealth -= amount;
 
-        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthText();
 
         //Debug.Log("<color=red>❤️ Salud actual: " + currentHealth + "</color>"); 

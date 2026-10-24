@@ -1307,6 +1307,73 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2859576113441364606, guid: 5a4370898d8c7374db9bdb5fff2d585b, type: 3}
   m_PrefabInstance: {fileID: 1892561962}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &806133135
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 806133138}
+  - component: {fileID: 806133137}
+  - component: {fileID: 806133136}
+  m_Layer: 0
+  m_Name: ToxicGasZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &806133136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806133135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fcac1c12482a3342ac5c7be7b9eb340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToxicGasZone
+  damagePerSecond: 10
+--- !u!65 &806133137
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806133135}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &806133138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806133135}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.75622, y: 0, z: -15.45588}
+  m_LocalScale: {x: 4, y: 1, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &822274273
 GameObject:
   m_ObjectHideFlags: 0
@@ -1747,7 +1814,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ConsoleInteraction
   activatedColor: {r: 0, g: 1, b: 0, a: 1}
   requiredItems: 7
-  bunkerDoor: {fileID: 611790339}
   isActivated: 0
 --- !u!65 &1567618041
 BoxCollider:
@@ -2665,3 +2731,4 @@ SceneRoots:
   - {fileID: 64638063}
   - {fileID: 611790338}
   - {fileID: 408931426}
+  - {fileID: 806133138}

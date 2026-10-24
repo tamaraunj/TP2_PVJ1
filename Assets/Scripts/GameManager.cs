@@ -144,7 +144,7 @@ public class GameManager : MonoBehaviour
         ScoreSystem score = player.GetComponent<ScoreSystem>();
         if (health == null || score == null) return;
 
-        float currentHealth = health.CurrentHealth;
+        int currentHealth = health.CurrentHealth;
         int currentScore = score.Score;
 
         if (currentHealth != lastHealth || currentScore != lastScore)

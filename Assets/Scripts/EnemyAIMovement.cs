@@ -22,7 +22,7 @@ public class EnemyAIMovement : MonoBehaviour
     private int currentPatrolIndex;
     private bool isWaitingAtPoint;
     private HealthSystem healthSystemPlayer;
-    [SerializeField] private float damageAmount = 10f;
+    [SerializeField] private int damageAmount = 10;
     [SerializeField] private float damageInterval = 1f;
 
     private float nextDamageTime;
