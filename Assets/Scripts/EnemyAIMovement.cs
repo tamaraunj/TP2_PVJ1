@@ -144,7 +144,6 @@ public class EnemyAIMovement : MonoBehaviour
             if (healthSystemPlayer != null)
             {
                 healthSystemPlayer.TakeDamage(damageAmount);
-                Debug.Log("El enemigo atacó al jugador.");
                 nextDamageTime = Time.time + damageInterval;
                 
             }

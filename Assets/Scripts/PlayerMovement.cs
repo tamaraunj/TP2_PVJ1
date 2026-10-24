@@ -33,8 +33,14 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+        if (Time.timeScale == 0f)
+        {
+            horizontal = 0f;
+            vertical = 0f;
+            return;
+        }
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
 
         CheckGround();
         CheckHorizontalRaycast();
@@ -52,6 +58,12 @@ public class PlayerMovement : MonoBehaviour
         if (healthSystem != null && healthSystem.IsDead)
         {
             rb.linearVelocity = Vector3.zero;
+            return;
+        }
+        if (Time.timeScale == 0f)
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
             return;
         }
         Vector3 movement = (transform.forward * vertical + transform.right * horizontal).normalized;

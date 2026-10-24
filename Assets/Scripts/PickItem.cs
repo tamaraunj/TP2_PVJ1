@@ -20,9 +20,6 @@ public class PickItem : MonoBehaviour
 
         collected = true;
         scoreSystem.AddPoints(points);
-
-        Debug.Log("Objeto recolectado.");
-
         Destroy(gameObject);
     }
 }

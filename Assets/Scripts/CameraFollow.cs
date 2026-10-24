@@ -29,6 +29,7 @@ public class CameraFollow : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0f) return;
         currentX += Input.GetAxis("Mouse X") * sensitivityX;
         currentY -= Input.GetAxis("Mouse Y") * sensitivityY;
 
@@ -37,6 +38,7 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
+        if (Time.timeScale == 0f) return;
         if (target == null) return;
 
         Quaternion camRotation = Quaternion.Euler(currentY, currentX, 0);

@@ -28,7 +28,11 @@ public class HealthSystem : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
         UpdateHealthText();
 
-        Debug.Log($"Salud actual: {currentHealth}");
+        //Debug.Log("<color=red>❤️ Salud actual: " + currentHealth + "</color>"); 
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.NotifyPlayerStatusChanged();
+        }
 
         if (currentHealth <= 0f)
         {
@@ -38,7 +42,10 @@ public class HealthSystem : MonoBehaviour
     private void Dead()
     {
         isDead = true;
-        Debug.Log("¡El jugador se quedó sin salud!");
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.NotifyPlayerDead();
+        }
     }
     private void UpdateHealthText()
     {

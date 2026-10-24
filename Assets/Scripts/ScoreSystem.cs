@@ -14,7 +14,11 @@ public class ScoreSystem : MonoBehaviour
     {
         score += points;
         UpdateScoreText();
-    Debug.Log("Puntuación actual: " + score);
+        //Debug.Log("Puntuación actual: " + score);
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.NotifyPlayerStatusChanged();
+        }
     }
     private void UpdateScoreText()
     {
