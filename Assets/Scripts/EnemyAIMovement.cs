@@ -21,6 +21,11 @@ public class EnemyAIMovement : MonoBehaviour
     private Transform playerTransform;
     private int currentPatrolIndex;
     private bool isWaitingAtPoint;
+    private HealthSystem healthSystemPlayer;
+    [SerializeField] private float damageAmount = 10f;
+    [SerializeField] private float damageInterval = 1f;
+
+    private float nextDamageTime;
 
     private void Awake()
     {
@@ -38,6 +43,7 @@ public class EnemyAIMovement : MonoBehaviour
         if (playerObj != null)
         {
             playerTransform = playerObj.transform;
+            healthSystemPlayer = playerObj.GetComponent<HealthSystem>();
         }
         else
         {
@@ -126,13 +132,23 @@ public class EnemyAIMovement : MonoBehaviour
             return;
         }
 
+        
         if (!isAttacking)
         {
-            Debug.Log("El jugador está en zona de ataque del enemigo");
             isAttacking = true;
-
+            nextDamageTime = Time.time;
         }
-        
+
+        if (Time.time >= nextDamageTime)
+        {
+            if (healthSystemPlayer != null)
+            {
+                healthSystemPlayer.TakeDamage(damageAmount);
+                Debug.Log("El enemigo atacó al jugador.");
+                nextDamageTime = Time.time + damageInterval;
+                
+            }
+        }
     }
     private IEnumerator WaitAndMoveToNextPoint()
     {

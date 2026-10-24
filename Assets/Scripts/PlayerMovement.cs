@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal;
     private float vertical;
     private Rigidbody rb;
+    private HealthSystem healthSystem;
 
     [Header("Raycast Settings")]
     [SerializeField] private LayerMask groundLayer;     
@@ -22,11 +23,16 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        healthSystem = GetComponent<HealthSystem>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (healthSystem != null && healthSystem.IsDead)
+        {
+            return;
+        }
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
@@ -42,6 +48,12 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        // Si el jugador murió, detiene su movimiento físico.
+        if (healthSystem != null && healthSystem.IsDead)
+        {
+            rb.linearVelocity = Vector3.zero;
+            return;
+        }
         Vector3 movement = (transform.forward * vertical + transform.right * horizontal).normalized;
         rb.linearVelocity = new Vector3(movement.x * speed, rb.linearVelocity.y, movement.z * speed);
     }
@@ -75,8 +87,11 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else
                 {
-                    Destroy(hit.collider.gameObject);
-                    Debug.Log("Object collected!");
+                    PickItem item = hit.collider.GetComponentInParent<PickItem>();
+                    if (item != null)
+                    {
+                        item.Collect();
+                    }
                 }
             }
         }
