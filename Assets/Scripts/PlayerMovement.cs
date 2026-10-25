@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 5f;
     private float horizontal;
     private float vertical;
+    private float normalSpeed;
+    public float NormalSpeed => normalSpeed;
     private Rigidbody rb;
     private HealthSystem healthSystem;
 
@@ -25,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         healthSystem = GetComponent<HealthSystem>();
+        normalSpeed = speed;
     }
 
     // Update is called once per frame
@@ -118,5 +121,9 @@ public class PlayerMovement : MonoBehaviour
     public void RotateCharacter(float rotateY)
     {
         transform.rotation = Quaternion.Euler(0f, rotateY, 0f);
+    }
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
     }
 }
