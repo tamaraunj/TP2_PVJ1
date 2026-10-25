@@ -44,13 +44,14 @@ La zona de barro reduce temporalmente la velocidad de movimiento del jugador al 
 
 ### Imagen 1: Player y enemigo en la zona de barro
 
-![Escenario del juego](Imagenes del tp2/interaccion1.png)
+![Escenario del juego](<Imagenes del tp2/interaccion1.png>)
 
 ### Imagen 2: Laser que mata al jugador
 
-![Interacción del jugador](Imagenes del tp2/interaccion2.png)
+![Interacción del jugador](<Imagenes del tp2/interaccion2.png>)
 
 ### Imagen 3: Puerta y consola para ganar el juego
 
-![Interacción del jugador](Imagenes del tp2/interaccion3.png)
+![Interacción del jugador](<Imagenes del tp2/interaccion3.png>)
+
 
