@@ -26,7 +26,7 @@ public class ScoreSystem : MonoBehaviour
     {
         if (scoreText != null)
         {
-            scoreText.text = "Puntos: " + score;
+            scoreText.text = "Objetos: " + score;
         }
     }
 }

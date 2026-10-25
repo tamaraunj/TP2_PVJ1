@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PickItem : MonoBehaviour
 {
-    [SerializeField] private int points = 10;
+    [SerializeField] private int points = 1;
 
     private bool collected = false;
 
