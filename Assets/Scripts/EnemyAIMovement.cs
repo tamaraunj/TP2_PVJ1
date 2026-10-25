@@ -165,7 +165,7 @@ public class EnemyAIMovement : MonoBehaviour
     }
     private void GoToNextPatrolPoint()
     {
-        if (patrolPoints.Length == 0 || patrolPoints == null) return;
+        if (patrolPoints == null || patrolPoints.Length == 0) return;
         if (patrolPoints[currentPatrolIndex] == null) return;
 
         agent.SetDestination(patrolPoints[currentPatrolIndex].position);

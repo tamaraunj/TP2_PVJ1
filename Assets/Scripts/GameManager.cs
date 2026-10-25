@@ -11,18 +11,13 @@ public enum GameState
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    //static
-
-    //settings
+   
     [Header("State Settings")]
     [SerializeField] private GameState currentState;
     //public GameState CurrentState => currentState;
 
-    [Header("Victory Settings")]
-    [SerializeField] private EnemyAIMovement[] enemies;
-    [SerializeField] private int totalEnemies;
-    [SerializeField] private int enemiesRemaining;
-    private float lastHealth = -1f;
+    
+    private int lastHealth = -1;
     private int lastScore = -1;
 
     //singleton
@@ -40,8 +35,6 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        totalEnemies = enemies.Length;
-        enemiesRemaining = totalEnemies;
         ChangeState(GameState.Start);
         ChangeState(GameState.Playing);
     }
@@ -108,17 +101,6 @@ public class GameManager : MonoBehaviour
         ChangeState(GameState.GameOver);
     }
 
-    public void NotifyEnemyDefeat()
-    {
-        if (currentState != GameState.Playing) return;
-
-        enemiesRemaining--;
-
-        if (enemiesRemaining <= 0)
-        {
-            ChangeState(GameState.Victory);
-        }
-    }
 
     public void NotifyGoalZone()
     {
